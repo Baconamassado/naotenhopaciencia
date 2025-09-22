@@ -1,9 +1,9 @@
 local ESP = {}
 ESP.Players = {}
-ESP.Enabled = true -- controla ESP global
-ESP.BoxEnabled = true -- controla boxes
-ESP.HealthEnabled = true -- controla health bar
-ESP.NameEnabled = true -- controla player name
+ESP.Enabled = false -- controla ESP global
+ESP.BoxEnabled = false -- controla boxes
+ESP.HealthEnabled = false -- controla health bar
+ESP.NameEnabled = false -- controla player name
 ESP.BoxColor = Color3.fromRGB(120, 0, 255)
 ESP.NameColor = Color3.fromRGB(255,255,255)
 ESP.HealthColor = Color3.fromRGB(0,255,0)
@@ -43,7 +43,7 @@ local function updateESP()
             local screenPos, onScreen = workspace.CurrentCamera:WorldToViewportPoint(hrp.Position)
 
             if onScreen then
-                local size = Vector2.new(40, 80) -- box menor
+                local size = Vector2.new(40, 40) -- box menor
                 -- Box
                 objects.Box.Position = Vector2.new(screenPos.X - size.X/2, screenPos.Y - size.Y/2)
                 objects.Box.Size = size
