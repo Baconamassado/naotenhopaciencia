@@ -48,6 +48,13 @@ local function updateESP()
             if onScreen and ESP.Enabled then
                 local size = Vector2.new(40, 40)
 
+                -- Define cor da box baseado no time
+                if player.Team and LocalPlayer.Team and player.Team == LocalPlayer.Team then
+                    objects.Box.Color = Color3.fromRGB(0, 0, 255) -- Azul (aliado)
+                else
+                    objects.Box.Color = Color3.fromRGB(255, 0, 0) -- Vermelho (inimigo)
+                end
+
                 objects.Box.Position = Vector2.new(screenPos.X - size.X/2, screenPos.Y - size.Y/2)
                 objects.Box.Size = size
                 objects.Box.Visible = ESP.BoxEnabled
@@ -73,6 +80,7 @@ local function updateESP()
         end
     end
 end
+
 
 -- Inicializa ESP para todos os jogadores
 for _, player in pairs(Players:GetPlayers()) do
