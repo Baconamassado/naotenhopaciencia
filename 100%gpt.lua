@@ -40,6 +40,15 @@ end
 
 -- Atualiza ESP
 local function updateESP()
+
+    local localChar = LocalPlayer.Character
+    local localHRP = localChar and localChar:FindFirstChild("HumanoidRootPart")
+
+   if not localHRP then
+        print('É serio lil bro?')
+        return
+    end
+    
     for player, objects in pairs(ESP.Players) do
         if player.Character and player.Character:FindFirstChild("HumanoidRootPart") and player.Character:FindFirstChild("Humanoid") then
             local hrp = player.Character.HumanoidRootPart
