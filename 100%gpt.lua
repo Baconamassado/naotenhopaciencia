@@ -7,6 +7,7 @@ ESP.NameEnabled = false
 ESP.BoxColor = Color3.fromRGB(120, 0, 255)
 ESP.NameColor = Color3.fromRGB(255,255,255)
 ESP.HealthColor = Color3.fromRGB(0,255,0)
+ESP.MaxDistance = 175
 
 local RunService = game:GetService("RunService")
 local Players = game:GetService("Players")
@@ -43,6 +44,16 @@ local function updateESP()
         if player.Character and player.Character:FindFirstChild("HumanoidRootPart") and player.Character:FindFirstChild("Humanoid") then
             local hrp = player.Character.HumanoidRootPart
             local humanoid = player.Character.Humanoid
+
+            local distance = (hrp.Position - localHRP.Position).Magnitude
+
+            if ESP.MaxDistance > 0 and distance > ESP.MaxDistance then
+                objects.Box.Visible = false
+                objects.Name.Visible = false
+                objects.Health.Visible = false
+                continue
+            end
+            
             local screenPos, onScreen = workspace.CurrentCamera:WorldToViewportPoint(hrp.Position)
 
             if onScreen and ESP.Enabled then
