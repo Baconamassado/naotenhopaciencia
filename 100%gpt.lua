@@ -145,4 +145,8 @@ function ESP:SetColors(boxColor, nameColor, healthColor)
     end
 end
 
+function ESP:SetMaxDistance(dist)
+    ESP.MaxDistance = dist
+end
+
 return ESP
